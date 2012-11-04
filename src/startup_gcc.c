@@ -21,7 +21,6 @@
 // This is part of revision 9453 of the EK-LM4F120XL Firmware Package.
 //
 //*****************************************************************************
-
 #include "hw_nvic.h"
 #include "hw_types.h"
 
