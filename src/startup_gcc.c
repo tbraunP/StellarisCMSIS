@@ -11,7 +11,7 @@
 // Forward declaration of the default fault handlers.
 //
 //*****************************************************************************
-void Reset_Handler(void);
+static void Reset_Handler(void);
 static void NmiSR(void);
 static void FaultISR(void);
 static void IntDefaultHandler(void);
@@ -471,7 +471,7 @@ extern unsigned long _ebss;
 // application.
 //
 //*****************************************************************************
-void Reset_Handler(void)
+static void Reset_Handler(void)
 {
     unsigned long *pulSrc, *pulDest;
     unsigned long *dst;
