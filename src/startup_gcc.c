@@ -11,10 +11,10 @@
 // Forward declaration of the default fault handlers.
 //
 //*****************************************************************************
-static void Reset_Handler(void);
-static void NmiSR(void);
-static void FaultISR(void);
-static void IntDefaultHandler(void);
+void Reset_Handler(void);
+void NmiSR(void);
+void FaultISR(void);
+void IntDefaultHandler(void);
 
 //*****************************************************************************
 //
@@ -471,7 +471,7 @@ extern unsigned long _ebss;
 // application.
 //
 //*****************************************************************************
-static void Reset_Handler(void)
+void Reset_Handler(void)
 {
     unsigned long *pulSrc, *pulDest;
     unsigned long *dst;
@@ -544,7 +544,7 @@ void _init(void) {
 // by a debugger.
 //
 //*****************************************************************************
-static void NmiSR(void)
+void NmiSR(void)
 {
     //
     // Enter an infinite loop.
@@ -561,7 +561,7 @@ static void NmiSR(void)
 // for examination by a debugger.
 //
 //*****************************************************************************
-static void FaultISR(void)
+void FaultISR(void)
 {
     //
     // Enter an infinite loop.
@@ -578,7 +578,7 @@ static void FaultISR(void)
 // for examination by a debugger.
 //
 //*****************************************************************************
-static void IntDefaultHandler(void)
+void IntDefaultHandler(void)
 {
     //
     // Go into an infinite loop.
