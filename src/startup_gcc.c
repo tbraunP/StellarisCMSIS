@@ -22,6 +22,7 @@ void IntDefaultHandler(void);
 //
 //*****************************************************************************
 extern int main(void);
+extern void __libc_init_array(void);
 
 /* exception and interrupt vector table ------------------------------------*/
 typedef void (*ExceptionHandler)(void);
@@ -511,6 +512,9 @@ void Reset_Handler(void)
     HWREG(NVIC_CPAC) = ((HWREG(NVIC_CPAC) &
                          ~(NVIC_CPAC_CP10_M | NVIC_CPAC_CP11_M)) |
                         NVIC_CPAC_CP10_FULL | NVIC_CPAC_CP11_FULL);
+
+	/* call all static construcors in C++ (harmless in C programs) */
+	__libc_init_array();
 
     //
     // Call the application's entry point.
