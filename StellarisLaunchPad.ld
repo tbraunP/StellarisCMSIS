@@ -2,24 +2,6 @@
  *
  * blinky.ld - Linker configuration file for blinky.
  *
- * Copyright (c) 2012 Texas Instruments Incorporated.  All rights reserved.
- * Software License Agreement
- * 
- * Texas Instruments (TI) is supplying this software for use solely and
- * exclusively on TI's microcontroller products. The software is owned by
- * TI and/or its suppliers, and is protected under applicable copyright
- * laws. You may not combine this software with "viral" open-source
- * software in order to form a larger program.
- * 
- * THIS SOFTWARE IS PROVIDED "AS IS" AND WITH ALL FAULTS.
- * NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT
- * NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. TI SHALL NOT, UNDER ANY
- * CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
- * DAMAGES, FOR ANY REASON WHATSOEVER.
- * 
- * This is part of revision 9453 of the EK-LM4F120XL Firmware Package.
- *
  *****************************************************************************/
 
 /* Entry Point */
@@ -59,9 +41,7 @@ SECTIONS
     *(.text)           /* .text sections (code) */
     *(.text*)          /* .text* sections (code) */
 
-	 /* KEEP (libSTM32_CPP.a (.syscall_section))   */
-
-	 *(.rodata)         /* .rodata sections (constants, strings, etc.) */
+	*(.rodata)         /* .rodata sections (constants, strings, etc.) */
     *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
     *(.glue_7)         /* glue arm to thumb code */
     *(.glue_7t)        /* glue thumb to arm code */
@@ -139,7 +119,8 @@ SECTIONS
     
     /* provide heap of 12k */
     PROVIDE(__heap_start__ = .);
-    PROVIDE(__heap_end__ = ALIGN( . + 24576 ,8));
+    /* PROVIDE(__heap_end__ = ALIGN( . + 24576 ,8)); */
+    PROVIDE(__heap_end__ = ALIGN( . + 12288 ,8));
   } >RAM
 
   /* User_heap_stack section, used to check that there is enough RAM left */
