@@ -525,6 +525,7 @@ void Reset_Handler(void)
 /**
  * Initialize static objects and run constructors
  */
+#if 0
 void _init(void) {
 	asm volatile (
 	"		ldr		r3, =__init_array_start"   "\n\t" // load adress of __ctors_start__ into r0
@@ -539,6 +540,7 @@ void _init(void) {
 	"exit_init: "
 	:  :  : "r0", "r3", "r4");
 }
+#endif
 
 
 //*****************************************************************************
